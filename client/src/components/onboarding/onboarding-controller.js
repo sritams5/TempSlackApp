@@ -53,14 +53,17 @@ export function createInvitationComponent() {
   });
   invitComponent.querySelector('#submit').addEventListener('click', (e) => {
     e.preventDefault();
-    var elements = document.querySelectorAll("form#formid input[type=text]");
-    foo(elements,teamName);
+    //var elements = document.querySelectorAll("form#formid input[type=text]");
+    //foo(elements,teamName);
+    let elements=[];
     //for (var i = 0, element; element = elements[i++];) {
     //for (let i = 0;i< elements.length;i++) {
-    //$('form#formid :input[type=text]').each(function () {
-      // const input = $(this); // This is the jquery object of the input, do what you will
+    $('form#formid :input[type=text]').each(function () {
+      //elements.push($(this)); // This is the jquery object of the input, do what you will
+      someFunction($(this),teamName);
 
-    //});
+    });
+
     //  new Promise((resolve, reject) => {
     //       sendMail(elements[i],teamName).then((res) => {
     //        //res.json().then((data) => {
@@ -76,12 +79,23 @@ export function createInvitationComponent() {
     //   console.log("AA")
     //   sendMail(elements[i],teamName);
     // }, 2000);
-  //}
+//  }
   $('form#formid').find('input:text').val('');
   proceedNext(teamName,`Inivitation for team ${teamName}`);
   });
   $(`#${inivitationViewHolderId}`).empty().append(invitComponent);
   return invitComponent;
+}
+async function someFunction(element,teamName) {
+
+    //for (let i = 0; i < elements.length; i++) {
+    //for (var i = 0, element; element = elements[i++];) {
+      //console.log('ele length-'+elements.length);
+        console.log('ele'+$(element).val());
+        // wait for the promise to resolve before advancing the for loop
+        await sendMail(element,teamName);
+        //console.log("i value-"+i);
+    //}
 }
 async function foo(array,teamName) {
     //var array = [/* some data that will be used async*/]

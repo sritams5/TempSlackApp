@@ -19,7 +19,6 @@ export async function sendMail(element,teamName){
     let updatedTeam;
   //  team.then(function(result) {
     if(team != 'undefined' && team != null && team != "") {
-      console.log(`if team-${team.invitations}`);
       if(team.invitations != 'undefined' && team.invitations != null && team.invitations != "") {
           updatedTeam=team;
           //Object.assign(updatedTeam.invitations, {tokenz : reciever});
